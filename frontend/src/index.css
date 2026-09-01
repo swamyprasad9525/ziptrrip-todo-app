@@ -657,3 +657,28 @@ button {
   background: var(--accent);
   color: white;
 }
+
+/* Status Badge Styles */
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.status-active {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+.status-completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.active-stat {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.2) !important;
+  background: white !important;
+}

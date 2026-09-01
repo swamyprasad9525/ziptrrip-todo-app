@@ -27,6 +27,9 @@ function TodoItem({ todo, onUpdate, onDelete, onOpen }) {
 
       <div className="todo-content" onClick={onOpen}>
         <span className="todo-title">{todo.title}</span>
+        <span className={`status-badge ${todo.completed ? 'status-completed' : 'status-active'}`}>
+          {todo.completed ? '✓ Completed' : '⚡ Active'}
+        </span>
         <span className={priorityClass}>{todo.priority}</span>
         {todo.dueDate && (
           <span className="due-date">

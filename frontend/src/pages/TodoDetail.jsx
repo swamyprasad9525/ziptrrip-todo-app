@@ -14,6 +14,7 @@ function TodoDetail() {
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('medium');
   const [dueDate, setDueDate] = useState('');
+  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     fetchTodo();
@@ -27,6 +28,7 @@ function TodoDetail() {
       setTitle(res.data.title);
       setDescription(res.data.description);
       setPriority(res.data.priority);
+      setCompleted(res.data.completed || false);
       setDueDate(res.data.dueDate ? res.data.dueDate.slice(0, 10) : '');
     } catch (err) {
       setNotFound(true);
@@ -42,6 +44,7 @@ function TodoDetail() {
         title,
         description,
         priority,
+        completed,
         dueDate: dueDate || null,
       });
       setTodo(res.data);
@@ -91,6 +94,14 @@ function TodoDetail() {
           </div>
 
           <div className="form-row">
+            <div className="form-group">
+              <label>Status</label>
+              <select value={completed ? 'completed' : 'active'} onChange={(e) => setCompleted(e.target.value === 'completed')}>
+                <option value="active">⚡ Active</option>
+                <option value="completed">✓ Completed</option>
+              </select>
+            </div>
+
             <div className="form-group">
               <label>Priority</label>
               <select value={priority} onChange={(e) => setPriority(e.target.value)}>

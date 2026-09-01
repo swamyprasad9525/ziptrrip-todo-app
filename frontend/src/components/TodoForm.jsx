@@ -30,7 +30,9 @@ function TodoForm({ onCreated }) {
       setDueDate('');
       setError('');
     } catch (err) {
-      setError(err.response?.data?.message || 'Something went wrong');
+      console.error('Add Todo error:', err);
+      const msg = err.response?.data?.message || err.message || 'Something went wrong. Please check your backend connection.';
+      setError(msg);
     }
   };
 
