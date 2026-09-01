@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     if (req.query.status === 'completed') filter.completed = true;
 
     if (req.query.search) {
-      filter.title = { regex:req.query.search,regex: req.query.search,regex:req.query.search,options: 'i' };
+      filter.title = { $regex: req.query.search, $options: 'i' };
     }
 
     const todos = await Todo.find(filter).sort({ createdAt: -1 });
